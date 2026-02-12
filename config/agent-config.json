@@ -1,0 +1,27 @@
+{
+  "agentName": "{{ agent_name }}",
+  "useCaseId": "{{ use_case_id }}",
+  "accountNumber": "{{ account_number }}",
+  "accountOwner": "{{ account_owner }}",
+  "modelName": "{{ model_name }}",
+  "memory": {
+    "type": "{{ memory_type }}",
+    "retentionDays": {{ memory_retention_days }}
+  },
+  "logging": {
+    "enabled": {{ logging_enabled | lower }},
+    "provider": "{{ logging_provider }}",
+    "level": "{{ logging_level }}"
+  },
+  "environment": "{{ environment }}",
+  "tags": {
+    {% for key, value in tags.items() %}
+    "{{ key }}": "{{ value }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+  },
+  "metadata": {
+    "createdAt": "{{ created_at }}",
+    "createdBy": "{{ created_by }}",
+    "repositoryName": "{{ repository_name }}"
+  }
+}
